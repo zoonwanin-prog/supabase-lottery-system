@@ -1,4 +1,4 @@
-import React from 'react';
+import { supabase } from './supabaseClient';
 import './styles.css'; // Assuming you have a CSS file for styling
 
 // Mock data for components
