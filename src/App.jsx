@@ -1,5 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import { supabase } from './supabaseClient';
+import React from 'react';
+import './App.css'; // ✨ เพิ่มบรรทัดนี้เพื่อดึง CSS มาใช้งาน
+import { supabase } from './supabaseClient'; 
+
+// ... ส่วนที่เหลือของโค้ด App.jsx ...
 
 const App = () => {
   const [members, setMembers] = useState([]);
