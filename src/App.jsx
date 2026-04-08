@@ -1,5 +1,5 @@
-import { supabase } from './supabaseClient';
-// import './styles.css'; // Assuming you have a CSS file for styling
+import React from 'react';
+import { supabase } from './supabaseClient'; // ดึงตัวแปรที่ตั้งค่าไว้แล้วมาใช้
 
 // Mock data for components
 const mockData = {
