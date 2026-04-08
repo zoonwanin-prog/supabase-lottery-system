@@ -1,0 +1,147 @@
+/* src/App.css */
+:root {
+  --dark-blue: #003366; /* ฟ้าเข้ม */
+  --yellow: #FFD700;    /* เหลืองทอง */
+  --white: #FFFFFF;
+  --light-blue: #E6F0FA; /* ฟ้าอ่อนสำหรับพื้นหลัง */
+  --text-color: #333333;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--light-blue);
+  color: var(--text-color);
+}
+
+.app-container {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* Sidebar สไตล์น่ารัก */
+.sidebar {
+  width: 250px;
+  background-color: var(--dark-blue);
+  color: var(--white);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: var(--yellow);
+  text-align: center;
+  margin-bottom: 30px;
+  border-bottom: 2px solid var(--yellow);
+  padding-bottom: 10px;
+}
+
+.nav-item {
+  padding: 15px;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 16px;
+}
+
+.nav-item:hover {
+  background-color: rgba(255, 215, 0, 0.2); /* สีเหลืองใสๆ */
+  color: var(--yellow);
+}
+
+.nav-item.active {
+  background-color: var(--yellow);
+  color: var(--dark-blue);
+  font-weight: bold;
+}
+
+/* Main Content Area */
+.main-content {
+  flex: 1;
+  padding: 30px;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  background-color: var(--white);
+  padding: 15px 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+header h1 {
+  margin: 0;
+  color: var(--dark-blue);
+  font-size: 28px;
+}
+
+.user-profile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--dark-blue);
+  font-weight: bold;
+}
+
+/* Cards สไตล์ Dashboard */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background-color: var(--white);
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+  border-left: 5px solid var(--dark-blue);
+  transition: transform 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card-yellow {
+  border-left-color: var(--yellow);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  color: var(--dark-blue);
+}
+
+.card-title {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.card-icon {
+  font-size: 24px;
+}
+
+.card-value {
+  font-size: 36px;
+  font-weight: bold;
+  color: var(--text-color);
+}
+
+.card-desc {
+  font-size: 14px;
+  color: #666;
+  margin-top: 5px;
+}
