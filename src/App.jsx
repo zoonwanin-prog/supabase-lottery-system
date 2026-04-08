@@ -54,4 +54,4 @@ const LotterySystem = () => {
   );
 };
 
-export default LotterySystem;
+export default App;
