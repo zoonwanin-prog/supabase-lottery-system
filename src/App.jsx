@@ -1,48 +1,30 @@
 import React from 'react';
-import { supabase } from './supabaseClient'; // ดึงตัวแปรที่ตั้งค่าไว้แล้วมาใช้
+import { supabase } from './supabaseClient'; 
 
 // Mock data for components
 const mockData = {
-  dashboard: {/* Dashboard mock data */},
-  members: [/* Array of member mock data */],
-  lotteries: [/* Array of lottery mock data */],
-  finances: [/* Array of finance mock data */],
-  bets: [/* Array of betting mock data */],
-  reports: [/* Array of report mock data */],
-  settings: {/* Settings mock data */}
+  dashboard: {},
+  members: [],
+  lotteries: [],
+  finances: [],
+  bets: [],
+  reports: [],
+  settings: {}
 };
 
-const DashboardPage = () => {
-  return <div className='dashboard'>Dashboard Content</div>;
-};
+const DashboardPage = () => <div className='dashboard'>Dashboard Content</div>;
+const MembersPage = () => <div className='members'>Members Content</div>;
+const LotteryPage = () => <div className='lottery'>Lottery Content</div>;
+const FinancePage = () => <div className='finance'>Finance Content</div>;
+const BettingPage = () => <div className='betting'>Betting Content</div>;
+const ReportPage = () => <div className='report'>Report Content</div>;
+const SettingsPage = () => <div className='settings'>Settings Content</div>;
 
-const MembersPage = () => {
-  return <div className='members'>Members Content</div>;
-};
-
-const LotteryPage = () => {
-  return <div className='lottery'>Lottery Content</div>;
-};
-
-const FinancePage = () => {
-  return <div className='finance'>Finance Content</div>;
-};
-
-const BettingPage = () => {
-  return <div className='betting'>Betting Content</div>;
-};
-
-const ReportPage = () => {
-  return <div className='report'>Report Content</div>;
-};
-
-const SettingsPage = () => {
-  return <div className='settings'>Settings Content</div>;
-};
-
-const LotterySystem = () => {
+// แก้ชื่อจาก LotterySystem เป็น App ให้ตรงกับ main.jsx และ export
+const App = () => {
   return (
     <div className='lottery-system'>
+      <h1>Supa Lotto System Online</h1>
       <DashboardPage />
       <MembersPage />
       <LotteryPage />
@@ -54,4 +36,4 @@ const LotterySystem = () => {
   );
 };
 
-export default App;
+export default App; // ตอนนี้จะใช้งานได้เพราะชื่อข้างบนเป็น App แล้ว
