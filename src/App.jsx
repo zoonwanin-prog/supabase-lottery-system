@@ -1,39 +1,62 @@
-import React from 'react';
-import { supabase } from './supabaseClient'; 
+import React, { useState, useEffect } from 'react';
+import { supabase } from './supabaseClient';
 
-// Mock data for components
-const mockData = {
-  dashboard: {},
-  members: [],
-  lotteries: [],
-  finances: [],
-  bets: [],
-  reports: [],
-  settings: {}
-};
-
-const DashboardPage = () => <div className='dashboard'>Dashboard Content</div>;
-const MembersPage = () => <div className='members'>Members Content</div>;
-const LotteryPage = () => <div className='lottery'>Lottery Content</div>;
-const FinancePage = () => <div className='finance'>Finance Content</div>;
-const BettingPage = () => <div className='betting'>Betting Content</div>;
-const ReportPage = () => <div className='report'>Report Content</div>;
-const SettingsPage = () => <div className='settings'>Settings Content</div>;
-
-// แก้ชื่อจาก LotterySystem เป็น App ให้ตรงกับ main.jsx และ export
 const App = () => {
+  const [members, setMembers] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  // ฟังก์ชันดึงข้อมูลจาก Supabase
+  const fetchMembers = async () => {
+    try {
+      setLoading(true);
+      // เปลี่ยน 'members' เป็นชื่อตารางจริงของคุณใน Supabase
+      const { data, error } = await supabase
+        .from('members') 
+        .select('*');
+
+      if (error) throw error;
+      if (data) setMembers(data);
+    } catch (error) {
+      console.error('Error fetching members:', error.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // ให้ดึงข้อมูลทันทีที่เปิดหน้าเว็บ
+  useEffect(() => {
+    fetchMembers();
+  }, []);
+
   return (
-    <div className='lottery-system'>
-      <h1>Supa Lotto System Online</h1>
-      <DashboardPage />
-      <MembersPage />
-      <LotteryPage />
-      <FinancePage />
-      <BettingPage />
-      <ReportPage />
-      <SettingsPage />
+    <div style={{ padding: '20px', fontFamily: 'sans-serif' }}>
+      <h1>Supa Lotto Dashboard</h1>
+      <hr />
+
+      <section>
+        <h2>รายชื่อสมาชิก (ข้อมูลจริงจาก Database)</h2>
+        {loading ? (
+          <p>กำลังโหลดข้อมูล...</p>
+        ) : (
+          <ul>
+            {members.length > 0 ? (
+              members.map((m) => (
+                <li key={m.id}>
+                  {m.name} - {m.phone || 'ไม่มีเบอร์โทร'}
+                </li>
+              ))
+            ) : (
+              <p>ยังไม่มีข้อมูลสมาชิกในตาราง 'members'</p>
+            )}
+          </ul>
+        )}
+      </section>
+
+      <button onClick={fetchMembers} style={{ marginTop: '10px' }}>
+        กดเพื่อรีเฟรชข้อมูล
+      </button>
     </div>
   );
 };
 
-export default App; // ตอนนี้จะใช้งานได้เพราะชื่อข้างบนเป็น App แล้ว
+export default App;
